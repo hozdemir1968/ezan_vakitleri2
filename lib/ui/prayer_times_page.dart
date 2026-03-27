@@ -5,10 +5,11 @@ import 'package:intl/intl.dart';
 import '../components/drawer_menu.dart';
 import '../components/statics.dart';
 import '../components/styles.dart';
-import '../controllers/providers.dart';
+import '../controllers/prayer_time_ctrl.dart';
 import '../controllers/remaining_time.dart';
 import '../controllers/selected_town_notifier.dart';
 
+import '../models/data_result.dart';
 import '../models/prayer_time_model.dart';
 
 class PrayerTimesPage extends ConsumerWidget {
@@ -139,3 +140,9 @@ class PrayerCard extends ConsumerWidget {
     );
   }
 }
+
+// PRAYERTIMES PAGE
+final prayerTimesProvider = FutureProvider.family<DataResult, int>((ref, townId) async {
+  final ctrl = PrayerTimeCtrl();
+  return await ctrl.getDatas(townId).timeout(const Duration(seconds: 10));
+});

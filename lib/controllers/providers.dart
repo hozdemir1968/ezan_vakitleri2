@@ -61,15 +61,3 @@ final townsProvider = FutureProvider.family<List<TownModel>, int>((ref, stateId)
 
   return allTowns.where((e) => (e.name ?? '').toLowerCase().contains(query)).toList();
 });
-
-// PRAYERTIME PAGE
-final prayerTimeProvider = FutureProvider.family<DataResult, int>((ref, townId) async {
-  final ctrl = PrayerTimeCtrl();
-  return await ctrl.getDatas(townId).timeout(const Duration(seconds: 10));
-});
-
-// PRAYERTIMES PAGE
-final prayerTimesProvider = FutureProvider.family<DataResult, int>((ref, townId) async {
-  final ctrl = PrayerTimeCtrl();
-  return await ctrl.getDatas(townId).timeout(const Duration(seconds: 10));
-});

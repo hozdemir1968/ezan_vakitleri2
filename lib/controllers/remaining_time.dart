@@ -1,6 +1,8 @@
 import 'package:ezan_vakitleri/models/prayer_time_model.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import '../models/remaining_time_m.dart';
+
 class RemainingTime {
   List<RemainingTimeM> calcRemainingTimes(List<PrayerTimeModel> prayerTimeList) {
     List<RemainingTimeM> remainingTimeList = [];
@@ -36,14 +38,12 @@ class RemainingTime {
         now.isBefore(prayerTimeList[1].prayerTimes![0])) {
       remainingTimeList[5].isVakit = true;
       remainingTimeList[6].isNext = true;
-    } else {
-      remainingTimeList[5].isVakit = true;
-      remainingTimeList[6].isNext = true;
     }
     for (int i = 0; i < 7; i++) {
       if (i == 6) {
         remainingTimeList[i].diff = (prayerTimeList[1].prayerTimes![0]).difference(
-            now.subtract(Duration(seconds: 59)));
+          now.subtract(Duration(seconds: 59)),
+        );
       } else {
         remainingTimeList[i].diff = (prayerTimeList[0].prayerTimes![i].difference(
           now.subtract(Duration(seconds: 59)),
@@ -69,15 +69,6 @@ class RemainingTime {
       return '${remainingTimeM.diff!.inHours} ${'saat'} ${remainingTimeM.diff!.inMinutes % 60} ${'dakika'}';
     }
   }
-}
-
-class RemainingTimeM {
-  bool? isVakit;
-  bool? isNext;
-  Duration? diff;
-  String? remainingTime;
-
-  RemainingTimeM({this.isVakit, this.isNext, this.diff, this.remainingTime});
 }
 
 //

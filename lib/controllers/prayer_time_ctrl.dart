@@ -2,6 +2,7 @@ import 'package:flutter/foundation.dart';
 import 'package:get_storage/get_storage.dart';
 
 import '../models/daily_model.dart';
+import '../models/data_result.dart';
 import '../models/prayer_time_model.dart';
 import '../services/api_service.dart';
 import '../services/db_service.dart';
@@ -81,10 +82,4 @@ class PrayerTimeCtrl {
     final minute = int.parse(parts[1]);
     return DateTime(year, month, day, hour, minute);
   }
-}
-
-class DataResult {
-  final List<PrayerTimeModel>? prayerTimes;
-  final DailyModel? daily;
-  const DataResult({required this.prayerTimes, required this.daily});
 }
