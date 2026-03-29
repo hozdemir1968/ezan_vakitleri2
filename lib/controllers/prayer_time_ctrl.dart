@@ -1,4 +1,5 @@
 import 'package:flutter/foundation.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:get_storage/get_storage.dart';
 
 import '../models/daily_model.dart';
@@ -83,3 +84,15 @@ class PrayerTimeCtrl {
     return DateTime(year, month, day, hour, minute);
   }
 }
+
+// PRAYERTIME PAGE
+final prayerTimeProvider = FutureProvider.family<DataResult, int>((ref, townId) async {
+  final ctrl = PrayerTimeCtrl();
+  return await ctrl.getDatas(townId).timeout(const Duration(seconds: 10));
+});
+
+// PRAYERTIMES PAGE
+final prayerTimesProvider = FutureProvider.family<DataResult, int>((ref, townId) async {
+  final ctrl = PrayerTimeCtrl();
+  return await ctrl.getDatas(townId).timeout(const Duration(seconds: 10));
+});

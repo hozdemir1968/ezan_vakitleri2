@@ -9,7 +9,6 @@ import '../controllers/prayer_time_ctrl.dart';
 import '../controllers/remaining_time.dart';
 import '../controllers/selected_town_notifier.dart';
 import '../models/daily_model.dart';
-import '../models/data_result.dart';
 import '../models/prayer_time_model.dart';
 
 class PrayerTimePage extends ConsumerWidget {
@@ -58,11 +57,11 @@ class PrayerTimePage extends ConsumerWidget {
     final remainingTimeAsync = ref.watch(remainingTimesProvider);
 
     return ListView(
-      padding: const EdgeInsets.all(10),
+      padding: const EdgeInsets.all(8),
       children: [
         _dateCard(prayerTimes),
         const SizedBox(height: 10),
-        _prayerTimeTable(prayerTimes),
+        _prayerTimeCard(prayerTimes),
         const SizedBox(height: 10),
         _verseCard(daily),
         const SizedBox(height: 10),
@@ -85,7 +84,7 @@ class PrayerTimePage extends ConsumerWidget {
               padding: const EdgeInsets.only(top: 5, bottom: 5),
               child: Text(
                 DateFormat.yMMMMEEEEd(
-                  trTR.countryCode,
+                  'tr',
                 ).format(DateTime.parse(model.gregorianDateLongIso8601 ?? "").toLocal()),
                 style: textStyle20B(),
               ),
@@ -100,7 +99,7 @@ class PrayerTimePage extends ConsumerWidget {
     );
   }
 
-  Widget _prayerTimeTable(List<PrayerTimeModel> prayerTimes) {
+  Widget _prayerTimeCard(List<PrayerTimeModel> prayerTimes) {
     final model = prayerTimes.first;
     final remainingTimes = RemainingTime().calcRemainingTimes(prayerTimes);
 
@@ -221,9 +220,3 @@ class PrayerTimePage extends ConsumerWidget {
     );
   }
 }
-
-// PRAYERTIME PAGE
-final prayerTimeProvider = FutureProvider.family<DataResult, int>((ref, townId) async {
-  final ctrl = PrayerTimeCtrl();
-  return await ctrl.getDatas(townId).timeout(const Duration(seconds: 10));
-});

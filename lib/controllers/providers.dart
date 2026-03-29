@@ -5,7 +5,6 @@ import '../models/country_model.dart';
 import '../models/state_model.dart';
 import '../models/town_model.dart';
 import '../services/api_service.dart';
-import 'prayer_time_ctrl.dart';
 
 // COUNTRY
 // Arama metni için provider
