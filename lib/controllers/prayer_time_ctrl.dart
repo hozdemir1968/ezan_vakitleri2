@@ -33,13 +33,13 @@ class PrayerTimeCtrl {
         // API
         debugPrint("API");
         prayerTimes = await _apiService.getPrayerTimes(townId);
+        await _dbService.deletePrayerTimesBy(townId);
+        await _dbService.savePrayerTimes(prayerTimes);
         prayerTimes.removeWhere(
           (item) => DateTime.parse(item.gregorianDateLongIso8601!).isBefore(today),
         );
         prayerTimes = addPrayerTimesToList(prayerTimes);
         prayerTimes = addTownToList(prayerTimes);
-        await _dbService.deletePrayerTimesBy(townId);
-        await _dbService.savePrayerTimes(prayerTimes);
         daily = await _apiService.getDaily();
         await _dbService.saveDaily(daily);
       }

@@ -1,8 +1,8 @@
-import 'package:ezan_vakitleri/components/styles.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../controllers/theme_notifier.dart';
+import 'custom_theme.dart';
 
 class DrawerMenu extends ConsumerWidget {
   final int townId;

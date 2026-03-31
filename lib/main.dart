@@ -14,7 +14,7 @@ void main() async {
   await GetStorage.init();
   await DBService().database;
   ApiService().init();
-  initializeDateFormatting('tr', 'TR');
+  initializeDateFormatting('tr_TR', ' ');
   runApp(ProviderScope(child: const MyApp()));
 }
 

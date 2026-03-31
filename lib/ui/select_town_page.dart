@@ -3,7 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:get_storage/get_storage.dart';
 
-import '../controllers/providers.dart';
+import '../controllers/selection_ctrl.dart';
 import '../controllers/selected_town_notifier.dart';
 import '../models/saved_town_model.dart';
 import '../services/db_service.dart';

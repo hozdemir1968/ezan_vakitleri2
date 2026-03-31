@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:intl/intl.dart';
 
+import '../components/custom_theme.dart';
 import '../components/drawer_menu.dart';
 import '../components/statics.dart';
-import '../components/styles.dart';
 import '../controllers/prayer_time_ctrl.dart';
 import '../controllers/remaining_time.dart';
 import '../controllers/selected_town_notifier.dart';

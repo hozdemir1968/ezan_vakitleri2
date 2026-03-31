@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import '../controllers/providers.dart';
+import '../controllers/selection_ctrl.dart';
 
 class SelectStatePage extends ConsumerWidget {
   final int countryId;

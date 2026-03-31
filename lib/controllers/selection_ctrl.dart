@@ -6,6 +6,8 @@ import '../models/state_model.dart';
 import '../models/town_model.dart';
 import '../services/api_service.dart';
 
+class SelectionCtrl {}
+
 // COUNTRY
 // Arama metni için provider
 final countrySearchQueryProvider = StateProvider<String>((ref) => "");
